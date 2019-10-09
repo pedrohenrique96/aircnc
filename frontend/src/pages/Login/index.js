@@ -13,7 +13,7 @@ export default ({ history }) => {
 
     localStorage.setItem("user", _id);
 
-    history.push("/dashboard");
+    history.push("/profile");
   };
   return (
     <>

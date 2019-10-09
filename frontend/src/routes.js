@@ -9,7 +9,7 @@ export default () => (
   <Switch>
     <Route path="/" exact component={Login} />
 
-    <Route path="/dashboard" component={Dashboard} />
+    <Route path="/profile" component={Dashboard} />
 
     <Route path="/new" component={New} />
   </Switch>

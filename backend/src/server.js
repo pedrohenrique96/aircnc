@@ -3,6 +3,8 @@ const cors = require("cors");
 const morgan = require("morgan");
 const port = process.env.PORT || 3333;
 
+require("./database/database");
+
 const routes = require("./Routes/routes");
 
 const app = express();

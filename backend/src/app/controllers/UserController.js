@@ -3,10 +3,11 @@ const User = require("../models/User");
 class UserController {
   async store(req, res) {
     try {
-      const user = await User.create(req.body);
+      const { email } = req.body;
+      const user = await User.create({ email });
       return res.json(user);
     } catch (err) {
-      console.log(err);
+      res.status(400).send({ error: "Error" });
     }
   }
 }
