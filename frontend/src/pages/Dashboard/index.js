@@ -8,7 +8,7 @@ export default () => {
   const [spots, setSpots] = useState([]);
   const [requests, setRequests] = useState([]);
 
-  const user_id = localStorage.getItem("user");
+  // const user_id = localStorage.getItem("user");
 
   // const socket = useMemo(() =>
   //   socketio(serverConfig.URL, {
