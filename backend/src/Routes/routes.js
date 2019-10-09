@@ -13,6 +13,8 @@ routes.post("/user", UserController.store);
 
 routes.get("/spot", SpotController.index);
 routes.post("/spot", upload.single("thumbnail"), SpotController.store);
-routes.post("/spot/:id/bookings",  BookingController.store);
+routes.post("/spot/:id/bookings", BookingController.store);
 
 routes.get("/profile", ProfileController.show);
+
+module.exports = routes;
