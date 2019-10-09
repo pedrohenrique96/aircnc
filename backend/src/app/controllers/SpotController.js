@@ -23,7 +23,7 @@ class SpotController {
       user: user_id,
       thumbnail: filename,
       company,
-      techs: techs.sprit(",").map(tech => tech.trim()),
+      techs: techs.split(",").map(tech => tech.trim()),
       price
     });
     return res.json(spot);

@@ -8,8 +8,6 @@ export default () => {
   const [spots, setSpots] = useState([]);
   const [requests, setRequests] = useState([]);
 
-  // const user_id = localStorage.getItem("user");
-
   // const socket = useMemo(() =>
   //   socketio(serverConfig.URL, {
   //     query: { user_id }
@@ -23,31 +21,31 @@ export default () => {
   // }, [requests, socket])
 
   useEffect(() => {
-    (async () => {
-      const user_id = localStorage.getItem("user");
-
+    const user_id = localStorage.getItem("user");
+    async function loadSpots() {
       const response = await api.get("/profile", {
         headers: { user_id }
       });
       setSpots(response.data);
-    })();
+    }
+    loadSpots();
   }, []);
 
-  const handleAccept = async id => {
-    await api.post(`/bookings/${id}/approvals`);
+  // const handleAccept = async id => {
+  //   await api.post(`/bookings/${id}/approvals`);
 
-    setRequests(requests.filter(request => request._id !== id));
-  };
+  //   setRequests(requests.filter(request => request._id !== id));
+  // };
 
-  const handleReject = async id => {
-    await api.post(`/bookings/${id}/rejections`);
+  // const handleReject = async id => {
+  //   await api.post(`/bookings/${id}/rejections`);
 
-    setRequests(requests.filter(request => request._id !== id));
-  };
+  //   setRequests(requests.filter(request => request._id !== id));
+  // };
 
   return (
     <>
-      <ul className="notifications">
+      {/*<ul className="notifications">
         {requests.map(request => (
           <li key={request._id}>
             <p>
@@ -72,6 +70,7 @@ export default () => {
           </li>
         ))}
       </ul>
+        */}
 
       <ul className="spot-list">
         {spots.map(spot => (
