@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { SafeAreaView, AsyncStorage, Image, StyleSheet, ScrollView } from 'react-native';
+import { SafeAreaView, AsyncStorage, Image, StyleSheet, ScrollView, TouchableOpacity, Text } from 'react-native';
 
 import logo from '../assets/logo.png'
 
@@ -9,10 +9,10 @@ export default function List() {
 
   const [techs, setTechs] = useState([])
 
+
   useEffect(() => {
     AsyncStorage.getItem('techs').then(storegeTechs => {
       const techsArray = storegeTechs.split(',').map(tech => tech.trim())
-
       setTechs(techsArray)
     })
   }, [])

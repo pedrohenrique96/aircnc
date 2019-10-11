@@ -18,7 +18,15 @@ class BookingController {
       .populate("spot")
       .populate("user")
       .execPopulate();
+      
+      const awnerSocket = req.connectedUser[booking.spot.user]
+  
+      if(awnerSocket) {
+        req.io.io(awnerSocket).emit('booking_request')
+      }
+
     return res.json(booking);
+
   }
 }
 
