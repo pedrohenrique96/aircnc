@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../../services/api";
 
@@ -6,7 +6,7 @@ import "./styles.css";
 
 export default () => {
   const [spots, setSpots] = useState([]);
-  const [requests, setRequests] = useState([]);
+  //const [requests, setRequests] = useState([]);
 
   // const socket = useMemo(() =>
   //   socketio(serverConfig.URL, {

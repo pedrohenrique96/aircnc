@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 try {
-  mongoose.connect('mongodb+srv://pedrook16:ba0896@P@cloneinstagram-iubz8.mongodb.net/aircnc?retryWrites=true&w=majority', {
+  mongoose.connect('mongodb://localhost:27017/aircnc', {
     useNewUrlParser: true,
     useUnifiedTopology: true
   });
