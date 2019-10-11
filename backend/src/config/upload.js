@@ -8,13 +8,13 @@ const aws = require("aws-sdk");
 const storageTypes = {
   local: multer.diskStorage({
     destination: (req, file, callback) => {
-      callback(null, path.resolve(__dirname, "..", "..", "uploads"));
+      callback(null, path.resolve(__dirname, "..", "..", "Uploads"));
     },
     filename: (req, file, callback) => {
       crypto.randomBytes(16, (err, hash) => {
         if (err) callback(err);
-        const filename = `${hash.toString("hex")}-${file.originalname}`;
-        callback(null, filename);
+        file.key  = `${hash.toString("hex")}-${file.originalname}`;
+        callback(null, file.key );
       });
     }
   }),

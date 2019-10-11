@@ -76,7 +76,7 @@ export default () => {
         {spots.map(spot => (
           <li key={spot._id}>
             <header
-              style={{ backgroundImage: `url('${spot.thumbnail_url}')` }}
+              style={{ backgroundImage: `url('${spot.url}')` }}
             />
             <strong>{spot.company}</strong>
             <span>{spot.price ? `$${spot.price}/day` : `FREE`}</span>

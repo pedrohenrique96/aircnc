@@ -3,6 +3,7 @@ const { Schema, model } = require("mongoose");
 const SpotSchema = new Schema(
   {
     thumbnail: String,
+    url: String,
     company: String,
     price: Number,
     techs: [String],
@@ -18,8 +19,10 @@ const SpotSchema = new Schema(
   }
 );
 
-SpotSchema.virtual("thumbnail_url").get(function() {
-  return `http://localhost:3333/files/${this.thumbnail}`;
+SpotSchema.pre("save", function() {
+   if(!this.url) {
+     this.url = `http://localhost:3333/files/${this.thumbnail}`;
+   }
 });
 
 module.exports = model("Spot", SpotSchema);
