@@ -1,12 +1,13 @@
 label#thumbnail {
-  display: flex;
-  justify-content: center;
   margin-bottom: 20px;
-  align-items: center;
   border: 1px dashed #ddd;
   background-size: cover;
-  height: 160px;
   cursor: pointer;
+  height: 160px;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 label#thumbnail input {

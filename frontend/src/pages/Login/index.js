@@ -1,42 +1,39 @@
-import React, { useState } from "react";
-import api from "../../services/api";
+import React, { useState } from 'react';
+import api from '../../services/api';
 
-export default ({ history }) => {
-  const [email, setEmail] = useState("");
+export default function Login({ history }) {
+  const [email, setEmail] = useState('');
 
-  const handleSubmit = async event => {
+  async function handleSubmit(event) {
     event.preventDefault();
 
-    const response = await api.post("/user", { email });
+    const response = await api.post('/sessions', { email });
 
     const { _id } = response.data;
 
-    localStorage.setItem("user", _id);
+    localStorage.setItem('user', _id);
 
-    history.push("/profile");
-  };
+    history.push('/dashboard');
+  }
+
   return (
     <>
       <p>
-        Offer <strong>spots</strong> for developers and find{" "}
-        <strong>talents</strong> for your company
+        Ofereça <strong>spots</strong> para programadores e encontre <strong>talentos</strong> para sua empresa
       </p>
 
       <form onSubmit={handleSubmit}>
         <label htmlFor="email">E-MAIL *</label>
-
-        <input
-          type="email"
-          id="email"
-          placeholder="Your best e-mail"
+        <input 
+          id="email" 
+          type="email" 
+          placeholder="Seu melhor e-mail"
           value={email}
           onChange={event => setEmail(event.target.value)}
         />
 
-        <button className="btn" type="submit">
-          Sign in
-        </button>
+        <button className="btn" type="submit">Entrar</button>
       </form>
     </>
-  );
-};
+  )
+}

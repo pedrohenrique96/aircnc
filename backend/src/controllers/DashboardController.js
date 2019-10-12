@@ -1,6 +1,6 @@
-const Spot = require("../models/Spot");
+const Spot = require('../models/Spot');
 
-class ProfileController {
+module.exports = {
   async show(req, res) {
     const { user_id } = req.headers;
 
@@ -9,5 +9,3 @@ class ProfileController {
     return res.json(spots);
   }
 }
-
-module.exports = new ProfileController();

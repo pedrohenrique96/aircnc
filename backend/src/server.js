@@ -1,40 +1,40 @@
-const express = require("express");
-const cors = require("cors");
-const morgan = require("morgan");
-const path = require("path");
-const socketio = require('socket.io')
-const http = require('http')
-const port = process.env.PORT || 3333;
-const routes = require("./Routes/routes");
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const path = require('path');
 
-require("./database/database");
+const socketio = require('socket.io');
+const http = require('http');
 
+const routes = require('./routes');
 
 const app = express();
-const server = http.Server(app)
-const io = socketio(server)
+const server = http.Server(app);
+const io = socketio(server);
 
-const connectedUser = {}
-
-io.on('connection', socket => {
-  const { user_id } = socket.handshake.query
-  connectedUser[user_id] = socket.id
+mongoose.connect('mongodb://localhost:27017/aircnc', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 })
 
-app.use((req, res, next) => {
-  req.io = io
-  req.connectedUser = connectedUser
+const connectedUsers = {};
 
-  return next()
-}) 
+io.on('connection', socket => {
+  const { user_id } = socket.handshake.query;
+
+  connectedUsers[user_id] = socket.id;
+});
+
+app.use((req, res, next) => {
+  req.io = io;
+  req.connectedUsers = connectedUsers;
+
+  return next();
+})
 
 app.use(cors());
-app.use(morgan("dev"));
-
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use("/files", express.static(path.resolve(__dirname, "..", "Uploads")));
-
+app.use('/files', express.static(path.resolve(__dirname, '..', 'uploads')));
 app.use(routes);
 
-server.listen(port, () => console.log(`Port ${port}`));
+server.listen(3333);

@@ -1,9 +1,9 @@
 ul.spot-list {
+  width: 100%;
+  list-style: none;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 20px;
-  width: 100%;
-  list-style: none;
   margin-bottom: 30px;
 }
 
@@ -53,5 +53,5 @@ ul.notifications li button.accept {
 }
 
 ul.notifications li button.reject {
-  color: #b42d2d;
+  color: #E55E5E;
 }
