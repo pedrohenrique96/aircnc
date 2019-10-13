@@ -30,6 +30,15 @@ export default function List() {
     })
   }, []);
 
+  async function handleLogout() {
+    try {
+      await AsyncStorage.removeItem('user');
+    }
+    catch(err) {
+      console.log(err)
+    }
+  }  
+
   return (
     <SafeAreaView style={styles.container}>
       <Image style={styles.logo} source={logo} />
@@ -37,7 +46,7 @@ export default function List() {
       <ScrollView>
         {techs.map(tech => <SpotList key={tech} tech={tech} />)}
       </ScrollView>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={handleLogout}>
       <Text>Sair</Text>
     </TouchableOpacity>
     </SafeAreaView>    
