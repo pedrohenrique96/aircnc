@@ -6,6 +6,10 @@
   ☕ Code and coffee
 </h4>
 
+<h1 align="center">
+    <img alt="Aircnc" title="#delicinha" src=".github/aircnc.png" width="1000px" />
+</h1>
+
 ## :rocket: Tecnologias
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
